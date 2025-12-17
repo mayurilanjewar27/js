@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Array Program</title>
+</head>
+
+<body>
+
+<h2>Array Operations</h2>
+
+<script>
+   const numbers = [10, 20, 30, 40, 50];
+
+   let largest = numbers[0];
+   let smallest = numbers[0];
+   let sum =0;
+
+   const key = 30;   
+
+   let found = false;
+
+   for(let i = 0; i < numbers.length; i++){
+      if(numbers[i] === key){
+         console.log("Element found at position " + (i + 1));
+         found = true;
+         break;
+      }
+   }
+   if(!found){
+      console.log("Element not found");
+   }
+
+
+   for (let i = 0; i < numbers.length; i++) {
+      if (numbers[i] > largest) {
+         largest = numbers[i];
+      }
+
+      if (numbers[i] < smallest) {
+         smallest = numbers[i];
+      }
+
+    
+         sum = sum + numbers[i];
+     
+
+   }
+
+   console.log("Largest number is: " + largest);
+   console.log("Smallest number is: " + smallest);
+   console.log("sum of array is:" + sum);
+</script>
+
+</body>
+</html>
