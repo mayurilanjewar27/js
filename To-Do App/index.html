@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ToDo App</title>
+
+    <style>
+        body {
+            padding: 0;     
+            margin: 0;
+            font-family: Arial;
+        }
+
+        .header {
+            
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background-color: #5c4010;
+            padding-bottom: 40px;
+            border-radius: 0 0 100px 100px;
+        }
+
+        .img-header {
+            height: 80px;
+        }
+
+        .header h1 {
+         color: #ffffff;
+          }
+
+        #todo-items-container {
+            padding: 20px;
+        }
+
+        .todo-item {
+          padding: 5px 20px;
+          border: 1px solid black;
+          border-radius: 20px;
+          margin-bottom: 10px;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+         }
+
+        .todo-add-container {
+            position: fixed;
+            bottom: 0px;
+            left: 0;
+            right: 0;
+            background-color: #5c4010;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px 0;
+        }
+
+        #todo-input {
+            padding: 5px 20px;
+            width: 40%;
+            margin-right: 10px;
+        }
+
+        #add-button {
+            height: 40px;
+            cursor: pointer;
+        }
+        .delete-icon{
+            height: 20px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="header">
+        <img src="To-Do-list.png" alt="ToDo List icon" class="img-header">
+        <h1>ToDo App</h1>
+    </div>
+
+    <div id="todo-items-container"></div>
+
+    <div class="todo-add-container">  
+        <input type="text" id="todo-input" placeholder="Add a new task">
+        <img src="plus.png" alt="Add icon" id="add-button" onclick="addToDo()">
+    </div>
+
+    <script>
+        const todoItems = ["gym jana hai", "study karni hai", "code karni hai"];
+
+        function displayToDoItems() {
+            const todoItemsContainer = document.getElementById("todo-items-container");
+            todoItemsContainer.innerHTML = "";
+
+            for (let i = 0; i < todoItems.length; i++) {
+                todoItemsContainer.innerHTML +=
+                    `<div class="todo-item">${todoItems[i] }
+                        <img src="delete.png" onclick="deleteTask(${i})" class="delete-icon"/>
+                        </div>`;
+            }
+        }
+
+        displayToDoItems();
+
+        function addToDo() {
+            const todoInput = document.getElementById("todo-input");
+
+            const newToDoItems= todoInput.value;
+
+             if(!newToDoItems.trim()){
+               alert("please enter a valid task.");
+               return;
+             }
+            todoItems.push(newToDoItems);  
+
+            todoInput.value = "";
+            displayToDoItems();
+        }
+         function deleteTask(index){
+            todoItems.splice(index, 1);
+              displayToDoItems();
+         }
+    </script>
+
+</body>
+</html>
